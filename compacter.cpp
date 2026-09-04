@@ -26,7 +26,7 @@ CompactionDetails Compact( std::vector<T*>& objects, ByteView region){
     CompactionDetails details;
     auto GetAdress= [](ByteView location){return location.data();};
 
-    for (const auto*& object: objects){
+    for (auto*& object: objects){
         const auto tSize= sizeof(T);
         if (const auto asBytes= reinterpret_cast<std::byte*>(objects); asBytes!= GetAdress(region)){
             // move
